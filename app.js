@@ -4,10 +4,13 @@ const {v4:uuidv4} = require("uuid");  //to generate unique id
 const app = express();
 app.use(express.json());  //middleware to parse the incoming request body
 
-//creating a application for expense management, we use id,income,expense
-mongoose.connect("mongodb://localhost:27017/expense").then(()=>{          //mongoose.connect returns a promise
+mongoose.connect("mongodb+srv://nikhilad2023cce:nikhila@cluster0.10i6nok.mongodb.net/").then(() => {
     console.log("Connected to database");
-});     
+})
+//creating a application for expense management, we use id,income,expense
+// mongoose.connect("mongodb://localhost:27017/expense").then(()=>{          //mongoose.connect returns a promise
+//     console.log("Connected to database");
+// });     
 
 const expenseSchema = new mongoose.Schema({     //creating a schema
     id:{type:String, required:true, unique:true},  //unique:true means it should be unique checked by mongoose
@@ -87,37 +90,7 @@ app.delete("/api/expenses/:id",async(req,res)=>{
 })
 
 
-// const students=[{
-//     name:"Nikhila",
-//     age:20,
-//     rollno:1
-// },{
-//     name:"Kalai",
-//     age:25,
-//     rollno:2
-// },
-// {
-//     name:"Prisha",
-//     age:25,
-//     rollno:3
-// }]
-// app.get("/api/sayhello",(req,res)=>{
-//     res.send("Hello World");
-//     res.end();
-// })
-// app.get("/api/students",(req,res)=>{
-//     res.status(200).json(students);
-// })
-// app.get("/api/students/:rollno",(req,res)=>{
-//     const{rollno}=req.params;
-//     const student=students.find((student)=>student.rollno==rollno);
-//     if(!student){
-//         res.status(404).send("Student not found");
-//     }
-//     else{
-//         res.status(200).json(student);
-//     }
-// })
+
 app.listen(3000,()=>{
      console.log("Server is running at port 3000");
  })
