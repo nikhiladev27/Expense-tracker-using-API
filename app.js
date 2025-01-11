@@ -1,8 +1,11 @@
 var express = require("express")
 const mongoose = require("mongoose");
 const {v4:uuidv4} = require("uuid");  //to generate unique id
+const cors = require('cors');
+
 const app = express();
 app.use(express.json());  //middleware to parse the incoming request body
+app.use('')
 
 mongoose.connect("mongodb+srv://nikhilad2023cce:nikhila@cluster0.10i6nok.mongodb.net/").then(() => {
     console.log("Connected to database");
